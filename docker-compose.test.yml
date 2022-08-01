@@ -1,0 +1,12 @@
+version: '3.2'
+
+services:
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./auth:/app
+
+
+
