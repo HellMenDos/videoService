@@ -11,6 +11,7 @@ services:
       - 80:8000
     depends_on:
       - auth
+      - videos
     networks:
       - union-network
 
@@ -37,6 +38,14 @@ services:
       - union-network
     restart: always
 
+  videos:
+    build:
+      context: ./videos
+    depends_on:
+      - db
+    networks:
+      - union-network
+    restart: always
 
 volumes:
   postgres_volume:

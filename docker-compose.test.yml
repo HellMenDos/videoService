@@ -8,5 +8,11 @@ services:
     volumes:
       - ./auth:/app
 
+  videos:
+    build:
+      context: ./videos
+      dockerfile: Dockerfile
+    volumes:
+      - ./videos:/videos
 
 
