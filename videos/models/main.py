@@ -1,3 +1,4 @@
+from tkinter.messagebox import YES
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -12,8 +13,5 @@ Base = declarative_base()
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db():
-    try:
-        db = SessionLocal()
+    with SessionLocal() as db:
         yield db
-    finally:
-        db.close()

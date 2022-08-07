@@ -1,10 +1,11 @@
-from fastapi import APIRouter,Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
 from models.main import get_db
 from models.posts import PostsModel
 import datetime
-router = APIRouter()
+import time
 
+router = APIRouter()
 
 @router.get("/posts/", tags=["posts"])
 async def all_posts(session: Session = Depends(get_db)):
@@ -15,5 +16,5 @@ async def all_posts(session: Session = Depends(get_db)):
     return posts
 
 @router.get("/posts/{id}", tags=["post"])
-async def get_posts(id: int):
-    return id
+async def get_posts(id: int, dp: int = 10):
+    return dp

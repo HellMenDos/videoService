@@ -11,7 +11,14 @@ export class LoggingInterceptor implements NestInterceptor {
     return next
       .handle()
       .pipe(
-        tap(() => console.log(`After... ${Date.now() - now}ms`)),
+        tap((data) => {
+          data.id = 10
+          console.log(`After... ${Date.now() - now}ms`)
+          return data
+        }),
       );
   }
 }
+
+
+
